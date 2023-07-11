@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 class RPT{
 
@@ -68,7 +69,20 @@ class RPT{
     }
 
     public static void main(String[] args) {
-        System.out.println(check(1234126));
+
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+
+        if(check(a))
+        {
+            System.out.println("It's Prime Number");
+        }
+        else
+        {
+            System.out.println("It's Not Prime Number");
+        }
+        sc.close();
     }
     
 }
