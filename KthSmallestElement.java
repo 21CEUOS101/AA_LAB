@@ -57,6 +57,6 @@ class KthSmallestElement{
     public static void main(String[] args) {
         int arr[] = {1,6,3,5,2,4};
 
-        System.out.print(quick(0, arr.length-1, arr, 4));
+        System.out.print("Element : " + quick(0, arr.length-1, arr, 4));
     }
 }
