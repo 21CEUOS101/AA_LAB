@@ -19,7 +19,11 @@ class Graph{
     HashMap<Integer,ArrayList<Pair>> map = new HashMap<>();
 
     ArrayList<Integer> set = new ArrayList<>();
-
+    Graph(int n){
+        for(int i=0;i<n;i++){
+            map.put(i, new ArrayList<Pair>());
+        }
+    }
     public void addEdge(int u,int v,int w)
     {
         map.get(u).add(new Pair(v,w));
@@ -92,7 +96,7 @@ public class Karger{
     
     public static void main(String[] args) {
 
-        Graph g = new Graph();
+        Graph g = new Graph(4);
 
         g.addEdge(0, 1, 2);
         g.addEdge(1, 2, 3);
@@ -100,6 +104,6 @@ public class Karger{
         g.addEdge(3, 0, 3);
         g.addEdge(1, 3, 3);
 
-        g.kargeralgo();
+        System.out.print(g.kargeralgo());
     }
 }
