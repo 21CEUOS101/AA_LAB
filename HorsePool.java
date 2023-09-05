@@ -2,8 +2,8 @@ public class HorsePool{
     public static void main(String[] args) {
         
 
-        String s1 = "aaaa";
-        String s2 = "aa";
+        String s1 = "Searchingforthelastpattern";
+        String s2 = "pattern";
 
         int[] pool = new int[26];
 
@@ -24,13 +24,13 @@ public class HorsePool{
             {
                 if(s1.charAt(i+j)!= s2.charAt(j))
                 {
-                    i += pool[s1.charAt(i+j)-'a'] - 1;
+                    i += pool[s1.charAt(i+s2.length()-1)-'a'] - 1;
                     break;
                 }
             }
             if(j==-1)
             {
-                System.out.println("String Matched at index : " + (i-j));
+                System.out.println("String Matched at index : " + (i));
             }
         }
     }
