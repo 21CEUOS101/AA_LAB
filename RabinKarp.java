@@ -31,7 +31,7 @@ public class RabinKarp {
                     System.out.println("Pattern Found at :" + i);
                 }
             } else {
-                t1 = (int) (t1 - dm) * 10 + (s.charAt(i + 1) - '0');
+                t1 = (int) (t1 - ((s.charAt(i + 1) - '0')*dm)) * 10 + (s.charAt(i + m) - '0');
                 while(t1 < 0)
                 {
                     t1 += q;
