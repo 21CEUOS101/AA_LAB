@@ -1,6 +1,5 @@
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class Convex_Hull {
 
@@ -62,55 +61,39 @@ public class Convex_Hull {
         return (x1*y2) - (x2*y1);
     }
 
-    public double angle(Point p1 , Point p2)
-    {
-        if((p2.x - p1.x) == 0)
-        {
-            return 90;
-        }
-
-        double m = ((p2.y - p1.y) /(double) (p2.x - p1.x));
-
-        return Math.atan(m);
+    public static Point[] sort_all(Point[] arr, Point p0) {
+        Arrays.sort(arr, 1, arr.length, new PointComparator(p0)); // Sort starting from index 1 to skip p0
+        return arr;
     }
 
-    public Point[] sort_all(Point[] arr , Point p0 , ArrayList<Point> a)
-    {
-        PriorityQueue<Point> pq= new PriorityQueue<>(arr.length-1, new PointComparator(p0));
-
-        for(int i=0;i<arr.length;i++)
-        {
-            if(p0 != arr[i])
-            {
-                pq.add(arr[i]);
-            }
-        }
-
-        pq.toArray();
-    }
-
-    class PointComparator implements Comparator<Point>{
+    static class PointComparator implements Comparator<Point>{
         Point p0;
 
-        PointComparator(Point p0)
-        {
+        PointComparator(Point p0) {
             this.p0 = p0;
         }
 
-        public int compare(Point p1, Point p2) {
-            if (angle(p1 , p0) > angle(p2,p0))
-                return 1;
-            else if (angle(p1 , p0) < angle(p2,p0))
+        public double angle(Point p1, Point p2) {
+            double angle1 = Math.atan2(p1.y - p0.y, p1.x - p0.x);
+            double angle2 = Math.atan2(p2.y - p0.y, p2.x - p0.x);
+
+            if (angle1 < angle2) {
                 return -1;
-                            return 0;
+            } else if (angle1 > angle2) {
+                return 1;
             }
+            return 0;
+        }
+
+        public int compare(Point p1, Point p2) {
+            return Double.compare(angle(p1, p2), 0);
         }
     }
     public static void main(String[] args) {
         Point p1 = new Point(0, 0);
         Point p2 = new Point(3, 1);
         Point p3 = new Point(4, 4);
-        Point p4 = new Point(1, 1);
+        Point p4 = new Point(1, 2);
         Point p5 = new Point(0, 5);
         Point p6 = new Point(2, 2);
         Point p7 = new Point(-1, 3);
@@ -120,5 +103,13 @@ public class Convex_Hull {
         Point ans = select(arr);
 
         System.out.println(ans.x + "  " + ans.y);
+
+        Object[] ans1 = sort_all(arr,ans);
+
+        for(int i=0;i<ans1.length;i++)
+        {
+            Point p = (Point) ans1[i];
+            System.out.println(p.x + " " + p.y);
+        }
     }
 }
