@@ -62,10 +62,10 @@ public class Intersection{
     }
 
     public static void main(String[] args) {
-        Point p1 = new Point(3, 5);
-        Point p2 = new Point(8, 10);
-        Point p3 = new Point(-1, 9);
-        Point p4 = new Point(15, 6);
+        Point p1 = new Point(1, 1);
+        Point p2 = new Point(4, 8);
+        Point p3 = new Point(2, 6);
+        Point p4 = new Point(6, 3);
 
         System.out.println(intersect(p1,p2,p3,p4));
     }
