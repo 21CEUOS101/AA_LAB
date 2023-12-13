@@ -7,7 +7,7 @@ public class Additive_Cipher{
         for(Character i : input.toCharArray())
         {
             int ash  = (((int) i + key - 'a'));
-            System.out.println(i + " " + ((char)(ash + 'a')));
+            System.out.println(i + "\t" + ((char)(ash + 'a')));
             output.append((char)(ash + 'a'));
         }
         return output.toString();
@@ -21,7 +21,7 @@ public class Additive_Cipher{
         for(Character i : input.toCharArray())
         {
             int ash  = (((int) i - key));
-            System.out.println(i + " " + ((char)(ash)));
+            System.out.println(i + "\t" + ((char)(ash)));
             output.append((char)(ash));
         }
 
