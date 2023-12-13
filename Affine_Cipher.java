@@ -9,7 +9,7 @@ public class Affine_Cipher{
             int c = (((int) i) + k2) % 'a';
             int ash  = (((c * key) % 26) + 'a');
 
-            System.out.println((i)+ "\t" + (c) + "\t" + ((char)(ash)));
+            System.out.println((i) + "\t" + (i-'a') + "\t" + (c*key) + "\t" + ((char)(ash)));
             output.append((char)ash);
         }
         return output.toString();
@@ -28,7 +28,7 @@ public class Affine_Cipher{
                 ash += 26;
             }
             ash += 'a';
-            System.out.println((i)+ "\t" + (c) + "\t" + ((char)(ash)));
+            System.out.println((i)+ "\t" + (i-'a') + "\t" + (c*key) + "\t" + ((char)(ash)));
             output.append((char)(ash));
         }
 
@@ -45,13 +45,13 @@ public class Affine_Cipher{
 
     public static void main(String args[])
     {
-        System.out.println("Key" + " " + "Additive" + " " + "Multiplicative");
+        System.out.println("pi" + " " + "pi-mapping" + " " + "multiplication" + " " + "ci-mapping");
         String input = "ashish";
         String encoded = encrypt(input , 5 , 10);
         System.out.println("Output : " + encoded);
 
         int inverse = modInverse(5, 26);
-        
+        System.out.println("pi" + " " + "pi-mapping" + " " + "multiplication" + " " + "ci-mapping");
         String decoded = decrypt(encoded , inverse , 10);
         System.out.println("Output : " + decoded);
     }
