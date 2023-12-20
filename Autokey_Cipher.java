@@ -6,15 +6,26 @@ public class Autokey_Cipher {
 
         for(int i=1;i<enc.length;i++)
         {
-            
+            System.out.println();
+            enc[i] = (((int)(text.charAt(i-1))) + ((int)(text.charAt(i))) - 2*('a') ) % 26;
         }
+
+        StringBuilder s = new StringBuilder();
+
+        for(int i : enc){
+            s.append((char) (i + 'a'));
+        }
+
+        return s.toString();
     }
 
     public static void main(String[] args) {
         String text = "hello";
         int key = 5;
 
+        String encrypted = encrypt(text, key);
 
+        System.out.println(encrypted);
     }
     
 }

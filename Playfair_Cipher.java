@@ -1,7 +1,20 @@
+import java.util.HashSet;
+import java.util.Set;
+
 public class Playfair_Cipher{
 
     public static int[][] gen_mat(String key)
     {
+
+        // Set<Character> st = new HashSet<>();
+
+        // for(Character l : key.toCharArray())
+        // {
+        //     st.add(l);
+        // }
+
+
+
         StringBuilder s = new StringBuilder(key);
         String abcd = "abcdefghijklmnopqrstuvwxyz";
         boolean flag = true;
@@ -41,9 +54,17 @@ public class Playfair_Cipher{
     {
         String updated = text;
 
+        for(int i=0;i<text.length()-1;i++)
+        {
+            if(text.charAt(i) == text.charAt(i+1))
+            {
+                text = text.substring(0, i+1) + 'x' + text.substring(i+1);
+            }
+        }
+
         if(text.length() % 2 == 1)
         {
-            text = text + "x";
+            text = text + 'x';
         }
 
         System.out.println(text);
@@ -57,17 +78,13 @@ public class Playfair_Cipher{
             Character c1 = text.charAt(i);
 
             int t = i+1;
-            while(text.charAt(t) == 'j')
+
+            while(t<text.length() && text.charAt(t) == 'j')
             {
                 t++;
             }
 
             Character c2 = text.charAt(t);
-
-            if(c2 == c1)
-            {
-                c2 = 'x';
-            }
 
             int e1x = 0, e1y = 0 , e2x = 0 , e2y = 0;
 
@@ -114,7 +131,7 @@ public class Playfair_Cipher{
 
         int[][] mat = gen_mat("orange");
 
-        String text = "apple";
+        String text = "hello";
         
         String encrypted = encrypt(text , mat);
 
