@@ -2,6 +2,12 @@ public class HillCipher{
 
     public static int[][] mul(int[][] key , int[][] p)
     {
+
+        if(key[0].length != p.length)
+        {
+            throw new RuntimeException("Plain Text is not Valid");
+        }
+        
         int[][] ans = new int[key.length][p[0].length];
         for(int i=0;i<key.length;i++)
         {
